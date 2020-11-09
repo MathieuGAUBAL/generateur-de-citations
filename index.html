@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Générateur de citations</title>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
     <h1>Mon générateur de citations</h1>
+
+    <div>
+        <input type="number" min="1" max="5" id="nombreCitation" value=1 onchange="nombreCitation()"/>
+        <button type="button" onclick="nombreCitation()">Autres citations ?</button>
+        <input type="checkbox" id="politiquementIncorrect" name="politiquementIncorrect" onchange="nombreCitation()"/>
+        <label for="politiquementIncorrect">Politiquement incorrect</label>
+    </div>
+
+
+    <div id="container-citations">
+        <div id="citations">
+
+        </div>
+    </div>
+
+    <script src="Citation.js"></script>
     <script src="main.js"></script>
 </body>
+
 </html>
