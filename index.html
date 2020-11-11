@@ -11,26 +11,26 @@
 </head>
 
 <body>
-    <h1 class="text-center p-5">Mon générateur de citations</h1>
+    <h1 class="text-center p-3">Politiquement correct <span>(ou pas)</span></h1>
 
     <div class="container">
         <div class="row">
-            <div class="form-group col-12 col-sm-4">
+            <div class="form-group col-sm-4">
                 <label for="nombreCitation">Nombre de citation (1 à 5)</label>
-                <input class="form-control col-6 col-sm-3" type="number" min="1" max="5" id="nombreCitation" value=1
-                    onchange="nombreCitation()" />
+                <input class="form-control col-2" type="number" min="1" max="5" id="nombreCitation" value=1
+                    onchange="executionProgramme()" />
             </div>
         </div>
 
         <div class="row">
-            <div class="form-group col-6 col-sm-3 d-flex align-items-sm-end">
-                <button type="button" class="btn btn-primary btn-sm" onclick="nombreCitation()">Autres citations
+            <div class="form-group col-sm-3 col-lg-2 d-flex align-items-sm-end">
+                <button type="button" class="btn btn-outline-warning text-white btn-sm" onclick="executionProgramme()">Autres citations
                     ?</button>
             </div>
 
             <div class="checkbox col-sm-6 d-flex align-items-sm-center">
                 <input type="checkbox" id="politiquementIncorrect"
-                    name="politiquementIncorrect" onchange="nombreCitation()" />
+                    name="politiquementIncorrect" onchange="executionProgramme()" />
                 <label class="form-check-label" for="politiquementIncorrect">Politiquement incorrect</label>
             </div>
         </div>

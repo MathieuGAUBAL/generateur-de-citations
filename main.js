@@ -62,46 +62,55 @@ const tableauChoix2 = [
     ]
 ]
 
-const array = [];
+
+const tableauIndex = [];
 
 const affichage = {
 
     suppressionCitations: (nombreCitation, id) => {
+     
+        tableauIndex.unshift(nombreCitation);
 
-        array.unshift(nombreCitation);
-
-        if (array.length > 2) {
-            array.pop();
+        if (tableauIndex.length > 2) {
+            tableauIndex.pop();
         }
 
-        if (array.length === 2) {
+        if (tableauIndex.length === 2) {
             let element = document.getElementsByClassName(id);
 
-            for (let i = 0; i < array[1]; i++) {
+            for (let i = 0; i < tableauIndex[1]; i++) {
                 element[0].parentNode.removeChild(element[0]);
             }
         }
     }
 }
 
-
-nombreCitation = () => {
-    let tableauCitations = [];
-    let nombreCitation = document.getElementById('nombreCitation').value;
-    if(nombreCitation > 0 && nombreCitation <= 5){
-        let checkbox = document.getElementById('politiquementIncorrect').checked;
-
-        affichage.suppressionCitations(nombreCitation, 'p-citation');
-    
-        for (let i = 0; i < nombreCitation; i++) {
-            tableauCitations.push(new Citation(checkbox ? tableauChoix2 : tableauChoix1, checkbox ? tableauChoix2.length : tableauChoix1.length , nombreCitation));
-            tableauCitations[i].generateurCitation();
-            tableauCitations[i].affichage();
-        }
-    }else{
+verificationNombreCitation = (nombreCitation) => {
+    if (nombreCitation > 0 && nombreCitation <= 5) {
+        return true;
+    } else {
         alert("Merci de sélectionner un chiffre entre 1 et 5");
     }
-
 }
 
-nombreCitation();
+creationCitation = (checkbox, nombreCitation) => {
+    let tableauCitations = [];
+    for (let i = 0; i < nombreCitation; i++) {
+        tableauCitations.push(new Citation(checkbox ? tableauChoix2 : tableauChoix1, checkbox ? tableauChoix2.length : tableauChoix1.length, nombreCitation));
+        tableauCitations[i].generateurCitation();
+        tableauCitations[i].affichage();
+    }
+}
+
+executionProgramme = () => {
+    
+    let nombreCitation = document.getElementById('nombreCitation').value;
+    let checkbox = document.getElementById('politiquementIncorrect').checked;
+
+    if(verificationNombreCitation(nombreCitation)){
+        affichage.suppressionCitations(nombreCitation, 'p-citation');
+        creationCitation(checkbox, nombreCitation);
+    }
+}
+
+executionProgramme();
