@@ -12,7 +12,7 @@ class Citation {
         this.tableauCitations = [];
     }
 
-    generateurCitation() {
+    generateurCitation = () => {
        
         for (let i = 0; i < this.nombreChoix; i++) {
             let index = this.getRandom(this.tableauChoix[i].length);
@@ -21,20 +21,26 @@ class Citation {
     }
 
 
-    getRandom(max) {
+    getRandom = (max) => {
         return Math.floor(Math.random() * max);
     }
 
 
-    affichage() {
+    affichage = () => {
 
         let div_id_citation = document.getElementById('citations');
         let phrase;
 
         let paragraphe = document.createElement('p');
-        paragraphe.classList.add('p-citation');
+        let blockquote = document.createElement('blockquote');
+
+        blockquote.classList.add('p-citation');
+
         phrase = document.createTextNode(this.tableauCitations.join(" "));
         paragraphe.append(phrase);
-        div_id_citation.appendChild(paragraphe);
+
+        blockquote.append(paragraphe);
+
+        div_id_citation.appendChild(blockquote);
     }
 }

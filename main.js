@@ -1,20 +1,3 @@
-/* function generateurDeCitations() {
-    let citation = "";
-
-    let phrase1 = document.getElementById('choix1').value;
-    let phrase2 = document.getElementById('choix2').value;
-    let phrase3 = document.getElementById('choix3').value;
-    let phrase4 = document.getElementById('choix4').value;
-
-    citation = `${phrase1} ${phrase2} ${phrase3} ${phrase4}`;
-    let div_id_citation = document.getElementById('citation');
-    div_id_citation.innerHTML = `
-    <blockquote>
-        <p>${citation}</p>
-        <footer>—Anonyme, <cite>La langue de bois</cite></footer>
-    </blockquote>`;
-
-} */
 
 
 const tableauChoix1 = [
@@ -60,12 +43,12 @@ const tableauChoix2 = [
     [
         "la CAF actuelle", "la situation de merde que certains d'entre vous connaissent",
         "le problème de la vie quotidienne", "la volonté de faire sortir notre pays",
-        "l'effort des nos amis chômeurs et des exclus", "la bêtise unique",
+        "l'effort de nos amis chômeurs et des exclus", "la bêtise unique",
         "l'aspiration de chacun au progrès associal", "la nécessité que vous soyez teenager ou vieux"
     ],
 
     [
-        "doit s'intégrer à la buvette globale", "oblige à chacun de se bouger",
+        "doit s'intégrer à la buvette globale", "oblige à chacun de se bouger le fion",
         "interpelle le délinquant dans la bonne voie", "a pour conséquence obligatoire l'urgente nécessité",
         "conforte mon désir sexuel dans ce sens", "doit nous amener au choix réel",
         "doit prendre en compte les préoccupations des gens de base", "entraîne une mission risquée : l'abrutissement"
@@ -82,21 +65,11 @@ const tableauChoix2 = [
 const array = [];
 
 const affichage = {
-    ajouterOption: function (id, phrase, compteur) {
 
-        let element = document.getElementById(id);
-        let option = document.createElement('option');
-        option.setAttribute('value', phrase);
-        option.text = phrase;
-        if (compteur === 0) {
-            option.setAttribute('selected', true);
-        }
-        element.appendChild(option);
-    },
-
-    suppressionCitations: function (nombreCitation, id) {
+    suppressionCitations: (nombreCitation, id) => {
 
         array.unshift(nombreCitation);
+
         if (array.length > 2) {
             array.pop();
         }
@@ -112,18 +85,23 @@ const affichage = {
 }
 
 
-function nombreCitation() {
+nombreCitation = () => {
     let tableauCitations = [];
     let nombreCitation = document.getElementById('nombreCitation').value;
-    let checkbox = document.getElementById('politiquementIncorrect').checked;
+    if(nombreCitation > 0 && nombreCitation <= 5){
+        let checkbox = document.getElementById('politiquementIncorrect').checked;
 
-    affichage.suppressionCitations(nombreCitation, 'p-citation');
-
-    for (let i = 0; i < nombreCitation; i++) {
-        tableauCitations.push(new Citation(checkbox ? tableauChoix2 : tableauChoix1, checkbox ? tableauChoix2.length : tableauChoix1.length , nombreCitation));
-        tableauCitations[i].generateurCitation();
-        tableauCitations[i].affichage();
+        affichage.suppressionCitations(nombreCitation, 'p-citation');
+    
+        for (let i = 0; i < nombreCitation; i++) {
+            tableauCitations.push(new Citation(checkbox ? tableauChoix2 : tableauChoix1, checkbox ? tableauChoix2.length : tableauChoix1.length , nombreCitation));
+            tableauCitations[i].generateurCitation();
+            tableauCitations[i].affichage();
+        }
+    }else{
+        alert("Merci de sélectionner un chiffre entre 1 et 5");
     }
+
 }
 
 nombreCitation();
