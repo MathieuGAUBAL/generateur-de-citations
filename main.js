@@ -32,7 +32,7 @@ const executerProgramme = () => {
 
         creerCitation(checkbox, nombreCitation);
     } else {
-        alert("Merci de sélectionner un chiffre entre 1 et 5")
+        alert("Merci de sélectionner un chiffre entre 1 et 5");
     }
 }
 

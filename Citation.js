@@ -15,13 +15,13 @@ class Citation {
     genererCitation = () => {
 
         for (let indexTab = 0; indexTab < this.nombreChoix; indexTab++) {
-            let nbrAleatoire = this.genererNombreAleatoire(this.tableauChoix[indexTab].length);
+            let nbrAleatoire = Citation.genererNombreAleatoire(this.tableauChoix[indexTab].length);
             this.tableauCitations.push(this.tableauChoix[indexTab][nbrAleatoire]);
         }
     }
 
 
-    genererNombreAleatoire = (nombre) => {
+    static genererNombreAleatoire = (nombre) => {
         return Math.floor(Math.random() * nombre);
     }
 
