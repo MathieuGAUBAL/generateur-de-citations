@@ -14,23 +14,23 @@ class Citation {
 
     genererCitation = () => {
 
-        for (let i = 0; i < this.nombreChoix; i++) {
-            let index = this.nombreAleatoire(this.tableauChoix[i].length);
-            this.tableauCitations.push(this.tableauChoix[i][index]);
+        for (let indexTab = 0; indexTab < this.nombreChoix; indexTab++) {
+            let nbrAleatoire = this.genererNombreAleatoire(this.tableauChoix[indexTab].length);
+            this.tableauCitations.push(this.tableauChoix[indexTab][nbrAleatoire]);
         }
       
     }
 
 
-    nombreAleatoire = (max) => {
+    genererNombreAleatoire = (max) => {
         return Math.floor(Math.random() * max);
     }
 
     /**
-     * @function affichage - permet de creer la citation puis de l'afficher dans le DOM
+     * @function insertionDansDom - permet de creer les élements "p", "blockquote", "div" afin de construire l'enveloppe de la citation puis d'insérer cette dernière dans le DOM
      *  
      */
-    affichage = () => {
+    insertionDansDom = () => {
 
         let div_id_citation = document.getElementById('citations');
         let phrase;
@@ -49,26 +49,28 @@ class Citation {
         div_id_citation.appendChild(blockquote);
     }
 
-    static tableauIndex = [];
+    static tableauHistoriqueNbrCitation = [];
     /**
      * @param  {Number} nombreCitation reçoit un Entier
      * @param  {String} id reçoit une chaine de caracteres
      */
     static suppressionCitations = (nombreCitation, id) => {
 
-        Citation.tableauIndex.unshift(nombreCitation);
+        Citation.tableauHistoriqueNbrCitation.unshift(nombreCitation);
 
-        if (Citation.tableauIndex.length > 2) {
-            Citation.tableauIndex.pop();
+        if (Citation.tableauHistoriqueNbrCitation.length > 2) {
+            Citation.tableauHistoriqueNbrCitation.pop();
         }
 
-        if (Citation.tableauIndex.length === 2) {
+        if (Citation.tableauHistoriqueNbrCitation.length === 2) {
             let element = document.getElementsByClassName(id);
 
-            for (let i = 0; i < Citation.tableauIndex[1]; i++) {
+            for (let nbFois = 0; nbFois < Citation.tableauHistoriqueNbrCitation[1]; nbFois++) {
                 element[0].parentNode.removeChild(element[0]);
             }
         }
+        
     }
 
 }
+

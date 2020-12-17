@@ -15,7 +15,7 @@ const creerCitation = (checkbox, nombreCitation) => {
        
         tableauCitations.push(new Citation(checkbox ? tableauChoix2 : tableauChoix1, nombreCitation));
         tableauCitations[i].genererCitation();
-        tableauCitations[i].affichage();
+        tableauCitations[i].insertionDansDom();
     }
 }
 
