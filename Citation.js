@@ -18,12 +18,11 @@ class Citation {
             let nbrAleatoire = this.genererNombreAleatoire(this.tableauChoix[indexTab].length);
             this.tableauCitations.push(this.tableauChoix[indexTab][nbrAleatoire]);
         }
-      
     }
 
 
-    genererNombreAleatoire = (max) => {
-        return Math.floor(Math.random() * max);
+    genererNombreAleatoire = (nombre) => {
+        return Math.floor(Math.random() * nombre);
     }
 
     /**

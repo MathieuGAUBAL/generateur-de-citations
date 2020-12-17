@@ -11,11 +11,11 @@
  */
 const creerCitation = (checkbox, nombreCitation) => {
     let tableauCitations = [];
-    for (let i = 0; i < nombreCitation; i++) {
+    for (let nFois = 0; nFois < nombreCitation; nFois++) {
        
         tableauCitations.push(new Citation(checkbox ? tableauChoix2 : tableauChoix1, nombreCitation));
-        tableauCitations[i].genererCitation();
-        tableauCitations[i].insertionDansDom();
+        tableauCitations[nFois].genererCitation();
+        tableauCitations[nFois].insertionDansDom();
     }
 }
 
