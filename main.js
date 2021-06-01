@@ -8,6 +8,7 @@
  * @function creerCitation - permet de creer une citation et permet de choisir le jeu de données qu'on souhaite utiliser avec checkbox
  * @param  {Boolean} checkbox - reçoit en Booléen - true (on souhaite utiliser un tableau de données secondaire) / false (on utilise le tableau de données principale)
  * @param  {Number} nombreCitation - reçoit un entier - nombre de citation que l'on souhaite
+ * @returns {void}
  */
 const creerCitation = (checkbox, nombreCitation) => {
     let tableauCitations = [];
